@@ -8,14 +8,12 @@ import java.util.Iterator;
 public class Graph {
 	ArrayList<ArrayList<EdgeNode>> adjList;
 	ArrayList<EdgeNode> edges;
-	ArrayList<String> nodes;
 	int nVertices;
 	int nEdges;
 
 	public void initialize() {
 		adjList = new ArrayList<>();
 		edges = new ArrayList<>();
-		nodes = new ArrayList<>();
 		fileInput();
 
 	}
@@ -39,17 +37,7 @@ public class Graph {
 				split = str.split(" ");
 				edges.add(new EdgeNode(split[0], split [1], split [2], split[3]));
 				edges.add(new EdgeNode(split[1], split [0], split [2], split[3]));
-				if (!nodes.contains(split[0])) {
-					nodes.add(split[0]);
-				}
 			}
-			
-/*			for (EdgeNode node : edges) {
-				System.out.println(node.toString());
-			}
-	*/		
-			
-			nodes.add("j");
 		}
 		catch(FileNotFoundException ex) {
 			System.out.println("Unable to open file");                
@@ -75,7 +63,6 @@ public class Graph {
 				
 				if (!temp.contains(hold) && hold.getStart().equals(temp.get(0).getStart())) {
 					temp.add(hold);
-					//System.out.println("Adding " + hold);		
 					iterator.remove();
 				}
 			}
@@ -83,19 +70,6 @@ public class Graph {
 			copy.remove(0);
 		}	
 		this.adjList = list;
-		
-/*				
-		for (ArrayList<EdgeNode> arr : this.adjList) {
-			System.out.println(arr);
-		}
-
-		System.out.println(list.size());
-		*/
-		 
-	}
-
-	public ArrayList<String> getNodes() {
-		return nodes;
 	}
 	
 	public ArrayList<EdgeNode> getEdges() {

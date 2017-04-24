@@ -1,9 +1,11 @@
 
-public class EdgeNode {
+public class EdgeNode implements Comparable<EdgeNode>{
 	private String destination;
 	private lineColor color;
 	private lineType type;
 	private String start;
+	private int dist;
+	private EdgeNode parent;
 	
 	public EdgeNode() {
 		
@@ -14,6 +16,22 @@ public class EdgeNode {
 		setDestination(dest);
 		setColor(color);
 		setType(type);
+	}
+	
+	public EdgeNode getParent() {
+		return this.parent;
+	}
+	
+	public void setParent(EdgeNode parent) {
+		this.parent = parent;
+	}
+	
+	public int getDist() {
+		return this.dist;
+	}
+	
+	public void setDist(int dist) {
+		this.dist = dist;
 	}
 	
 	public String getStart() {
@@ -73,5 +91,9 @@ public class EdgeNode {
 	
 	public String toString() {
 		return start + " " + destination + " " + color + " " + type;
+	}
+	
+	public int compareTo(EdgeNode other) {
+		return this.getStart().compareTo(other.getStart());
 	}
 }
